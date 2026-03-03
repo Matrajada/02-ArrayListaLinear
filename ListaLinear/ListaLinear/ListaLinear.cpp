@@ -64,18 +64,18 @@ void menu()
 
 void inicializar()
 {
-	nElementos = 0;
+	nElementos = 0; //inicia e reseta a lista
 	cout << "Lista inicializada \n";
 
 }
 
 void exibirQuantidadeElementos() {
 
-	cout << "Quantidade de elementos: " << nElementos << endl;
+	cout << "Quantidade de elementos: " << nElementos << endl; //mostra o numero de elementos
 
 }
 
-void exibirElementos()
+void exibirElementos() //mostra o nome de todos os elementos, nesse caso o loop é para exibir todas as opções
 {
 	if (nElementos == 0)
 	{
@@ -83,21 +83,21 @@ void exibirElementos()
 	}
 	else {
 		cout << "Elementos: \n";
-		for (int n = 0; n < nElementos; n++) {
+		for (int n = 0; n < nElementos; n++) { //enquanto N for menor que n elementos, ele continua em loop, e a cada rodada ele aumenta em um
 			cout << lista[n] << endl;
 		}
 	}
 }
 
-void inserirElemento()
+void inserirElemento() // o segurança na porta do buffet, maiss de 30 NAO PODE
 {
-	if (nElementos < MAX) {
+	if (nElementos < MAX) { //n elementos começa no 0 e no max 5
 		cout << "Digite o elemento: ";
-		cin >> lista[nElementos];
+		cin >> lista[nElementos]; // se vc declara uma variável local e uma variável global com a mesma função, ele vai seguir a variável local, pq tem mais peso
 		nElementos++;
 	}
 	else {
-		cout << "Lista cheia";
+		cout << "Lista cheia, nao tem mais espaco na memoria para guardar um elemento";
 	}
 
 }
@@ -105,5 +105,29 @@ void inserirElemento()
 // deve ser implementada como resposta ao exercicio
 void buscarElemento()
 {
+	if (nElementos == 0)
+	{
+		cout << "A lista esta vazia.\n";
+		return;
+	}
+	
+	int valor;
+	bool encontrado = false;
 
+	cout << "Digite o elemento que voce quer buscar: ";
+	cin >> valor;
+
+	for (int n = 0; n < nElementos; n++)
+	{
+		if (lista[n] == valor)
+		{
+			cout << "Elemento encontrado na posicao: " << n + 1 << endl;
+			encontrado = true;
+			break;
+		}
+	}
+	if (!encontrado)
+	{
+		cout << "Elemento nao encontrado.\n"; 
+	}
 }
